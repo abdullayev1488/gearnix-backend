@@ -6,7 +6,7 @@ import { CategoryRouter } from "./routes/category.route.js";
 import { Category } from "./models/category.model.js";
 import { welcomeTemplate } from "./const/index.const.js";
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 configPackages(app);
 app.use('/category', CategoryRouter)
