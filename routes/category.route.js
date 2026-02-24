@@ -5,12 +5,10 @@ import { deleteCategory } from "../controllers/category/delete.category.js";
 import { editCategory } from "../controllers/category/put.category.js";
 import { getCategoryById } from "../controllers/category/get-by-id.category.js";
 
-export const CategoryRouter = new Router()
+export const CategoryRouter = new Router();
 
-
-
-CategoryRouter.get('/all', getAllCategories)
-CategoryRouter.post('/create', createCategory)
-CategoryRouter.delete("/delete/:id", deleteCategory)
-CategoryRouter.put("/edit/:id", editCategory)
-CategoryRouter.get("/:id", getCategoryById)
+CategoryRouter.post("/create", createCategory);
+CategoryRouter.get("/", getAllCategories);
+CategoryRouter.get("/:id", getCategoryById);
+CategoryRouter.put("/:id", editCategory);
+CategoryRouter.delete("/:id", deleteCategory);

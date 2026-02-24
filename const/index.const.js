@@ -1,4 +1,4 @@
-export const welcomeTemplate =`
+export const welcomeTemplate = `
  <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -34,7 +34,8 @@ export const welcomeTemplate =`
             <p>API version: 1.0.0</p>
             <p>Use the following endpoints to explore:</p>
             <ul>
-                <li><a target="_blank" href="/category/all">/category/all</a></li>
+                <li><a target="_blank" href="/category">/category</a> (GET all)</li>
+                <li><a target="_blank" href="/category/create">/category/create</a> (POST)</li>
             </ul>
         </body>
         </html>`
