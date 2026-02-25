@@ -1,22 +1,26 @@
 import { Category } from "../../models/category.model.js";
 import { sendSuccess, sendError } from "../../utils/responseHelper.js";
 
-export const getAllCategories = async (req, res) => {
+export const getCategoryById = async (req, res) => {
     try {
-        const { status } = req.query;
+        const { id } = req.params;
+        const category = await Category.findById(id);
 
-        let filter = {};
-        if (status === "active") filter.status = true;
-        if (status === "inactive") filter.status = false;
-
-        const categories = await Category.find(filter).sort({ _id: -1 });
+        if (!category) {
+            return sendError(res, { message: "Category not found", statusCode: 404 });
+        }
 
         return sendSuccess(res, {
-            data: categories,
-            message: "Categories fetched successfully"
+            data: category,
+            message: "Category fetched successfully"
         });
     } catch (error) {
         console.error(error);
+
+        if (error.name === "CastError") {
+            return sendError(res, { message: "Invalid category ID", statusCode: 400 });
+        }
+
         return sendError(res, { message: "Internal server error" });
     }
 };

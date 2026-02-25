@@ -1,6 +1,4 @@
-import mongoose from "mongoose";
-
-const { Schema } = mongoose;
+import {model,Schema} from "mongoose";
 
 const categorySchema = new Schema({
     images: {
@@ -20,5 +18,5 @@ const categorySchema = new Schema({
     }
 })
 
-export const Category = mongoose.model("Category", categorySchema);
+export const Category = model("Category", categorySchema);
 

@@ -3,8 +3,10 @@ import { configDb } from "./config/configDb.js";
 import { configPackages } from "./config/configPackages.js";
 import "dotenv/config";
 import { CategoryRouter } from "./routes/category.route.js";
+import { BrandRouter } from "./routes/brands.route.js";
 import { welcomeTemplate } from "./const/index.const.js";
 import { errorHandler } from "./middleware/errorHandler.js";
+
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -13,6 +15,7 @@ configPackages(app);
 
 // Routes
 app.use("/category", CategoryRouter);
+app.use("/brand", BrandRouter);
 
 app.use("/", (_, res) => {
     res.send(welcomeTemplate);
