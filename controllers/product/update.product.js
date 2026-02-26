@@ -4,7 +4,7 @@ import { sendSuccess, sendError } from "../../utils/responseHelper.js";
 export const updateProduct = async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, image, price, oldPrice, rating, reviews, status } = req.body;
+        const { name, image, price, oldPrice, rating, reviews, status, category } = req.body;
 
         const product = await Product.findById(id);
         if (!product) {
@@ -19,6 +19,7 @@ export const updateProduct = async (req, res) => {
         if (rating !== undefined) updateData.rating = rating;
         if (reviews !== undefined) updateData.reviews = reviews;
         if (status !== undefined) updateData.status = status;
+        if (category !== undefined) updateData.category = category;
 
         const updatedProduct = await Product.findByIdAndUpdate(id, updateData, { new: true });
 

@@ -34,8 +34,22 @@ const productSchema = new Schema(
         status: {
             type: Boolean,
             default: true
+        },
+        category: {
+            type: Schema.Types.ObjectId,
+            ref: "Category",
+            required: true
+        },
+        brand: {
+            type: Schema.Types.ObjectId,
+            ref: "Brand"
+        },
+        discount: {
+            type: String,
+            default: ""
         }
-    }
+    },
+    { timestamps: true }
 );
 
 export const Product = model("Product", productSchema);
