@@ -4,7 +4,7 @@ import { sendSuccess, sendError } from "../../utils/responseHelper.js";
 export const getCategoryById = async (req, res) => {
     try {
         const { id } = req.params;
-        const category = await Category.findById(id);
+        const category = await Category.findById(id).populate("products");
 
         if (!category) {
             return sendError(res, { message: "Category not found", statusCode: 404 });

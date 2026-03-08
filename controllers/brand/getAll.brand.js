@@ -9,7 +9,7 @@ export const getAllBrands = async (req, res) => {
         if (status === "active") filter.status = true;
         if (status === "inactive") filter.status = false;
 
-        const brands = await Brand.find(filter).sort({ _id: -1 });
+        const brands = await Brand.find(filter).sort({ _id: -1 }).populate("products");
 
         return sendSuccess(res, {
             data: brands,

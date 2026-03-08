@@ -1,4 +1,4 @@
-import {model,Schema} from "mongoose";
+import { model, Schema } from "mongoose";
 
 const categorySchema = new Schema({
     images: {
@@ -6,7 +6,7 @@ const categorySchema = new Schema({
             type: String,
             required: true
         },
-        home:String,
+        home: String,
     },
     name: {
         type: String,
@@ -16,6 +16,15 @@ const categorySchema = new Schema({
         type: Boolean,
         default: true
     }
+}, {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
+})
+
+categorySchema.virtual("products", {
+    ref: "Product",
+    localField: "_id",
+    foreignField: "category"
 })
 
 export const Category = model("Category", categorySchema);

@@ -13,7 +13,16 @@ const brandSchema = new Schema({
     image: {
         type: String,
         required: true,
-    } 
+    }
+}, {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
+})
+
+brandSchema.virtual("products", {
+    ref: "Product",
+    localField: "_id",
+    foreignField: "brand"
 })
 
 export const Brand = model("Brand", brandSchema)

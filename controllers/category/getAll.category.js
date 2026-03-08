@@ -9,7 +9,7 @@ export const getAllCategories = async (req, res) => {
         if (status === "active") filter.status = true;
         if (status === "inactive") filter.status = false;
 
-        const categories = await Category.find(filter).sort({ _id: -1 });
+        const categories = await Category.find(filter).sort({ _id: -1 }).populate("products");
 
         return sendSuccess(res, {
             data: categories,
