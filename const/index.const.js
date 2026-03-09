@@ -34,8 +34,8 @@ export const welcomeTemplate = `
             <p>API version: 1.0.0</p>
             <p>Use the following endpoints to explore:</p>
             <ul>
-                <li><a target="_blank" href="/category">/category</a> (GET all)</li>
-                <li><a target="_blank" href="/category/create">/category/create</a> (POST)</li>
+                <li><a target="_blank" href="/api/category">/api/category</a> (GET all)</li>
+                <li><a target="_blank" href="/api/category/create">/api/category/create</a> (POST)</li>
             </ul>
         </body>
         </html>`
