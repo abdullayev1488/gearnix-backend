@@ -7,10 +7,9 @@ import { BrandRouter } from "./routes/brands.route.js";
 import { ProductRouter } from "./routes/product.route.js";
 import { welcomeTemplate } from "./const/index.const.js";
 import { errorHandler } from "./middleware/errorHandler.js";
-import { Product } from "./models/product.model.js";
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 7000;
 const app = express();
 
 configPackages(app);
