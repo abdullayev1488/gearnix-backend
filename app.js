@@ -15,9 +15,9 @@ const app = express();
 configPackages(app);
 
 // Routes
-app.use("/category", CategoryRouter);
-app.use("/brand", BrandRouter);
-app.use("/product", ProductRouter);
+app.use("/api/category", CategoryRouter);
+app.use("/api/brand", BrandRouter);
+app.use("/api/product", ProductRouter);
 
 app.use("/", (_, res) => {
     res.send(welcomeTemplate);
