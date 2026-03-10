@@ -6,9 +6,11 @@ export const sendSuccess = (res, { data = null, message = "Success", statusCode 
     });
 };
 
-export const sendError = (res, { message = "Internal server error", statusCode = 500 } = {}) => {
-    return res.status(statusCode).json({
+export const sendError = (res, { message = "Internal server error", statusCode = 500, field = null } = {}) => {
+    const response = {
         success: false,
-        message
-    });
+        message,
+    };
+    if (field) response.field = field;
+    return res.status(statusCode).json(response);
 };
