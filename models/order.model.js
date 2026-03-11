@@ -30,6 +30,12 @@ const orderSchema = new Schema(
       unique: true
     },
 
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true
+    },
+
     customer: {
       name: { type: String, required: true },
       email: { type: String, required: true },
@@ -46,7 +52,7 @@ const orderSchema = new Schema(
 
     paymentMethod: {
       type: String,
-      enum: ["card", "cash"],
+      enum: ["bank_transfer", "check", "cash"],
       required: true
     },
 

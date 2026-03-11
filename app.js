@@ -6,6 +6,7 @@ import { CategoryRouter } from "./routes/category.route.js";
 import { BrandRouter } from "./routes/brands.route.js";
 import { ProductRouter } from "./routes/product.route.js";
 import { UserRouter } from "./routes/user.route.js";
+import { OrderRouter } from "./routes/order.route.js";
 import { welcomeTemplate } from "./const/index.const.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 
@@ -20,6 +21,7 @@ app.use("/api/category", CategoryRouter);
 app.use("/api/brand", BrandRouter);
 app.use("/api/product", ProductRouter);
 app.use("/api/auth", UserRouter);
+app.use("/api/order", OrderRouter);
 
 app.use("/", (_, res) => {
     res.send(welcomeTemplate);
