@@ -1,6 +1,7 @@
 import { User } from "../../models/user.model.js";
 import { sendSuccess, sendError } from "../../utils/responseHelper.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export const registerUser = async (req, res) => {
     try {
@@ -34,8 +35,19 @@ export const registerUser = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = await User.create({ username, email, password: hashedPassword });
 
+        // Generate JWT token
+        const token = jwt.sign(
+            { id: user._id },
+            process.env.JWT_SECRET,
+            { expiresIn: "7d" }
+        );
+
+        // Return user without password
+        const userObj = user.toObject();
+        delete userObj.password;
+
         return sendSuccess(res, {
-            data: user,
+            data: { user: userObj, token },
             message: "Registration successful",
             statusCode: 201,
         });
