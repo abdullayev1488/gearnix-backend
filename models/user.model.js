@@ -21,6 +21,11 @@ const userSchema = new Schema(
             type: Boolean,
             default: true,
         },
+        role: {
+            type: String,
+            enum: ["customer", "admin"],
+            default: "customer",
+        },
     },
     { timestamps: true }
 );

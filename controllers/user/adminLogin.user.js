@@ -3,7 +3,7 @@ import { sendSuccess, sendError } from "../../utils/responseHelper.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-export const loginUser = async (req, res) => {
+export const adminLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -40,20 +40,26 @@ export const loginUser = async (req, res) => {
             });
         }
 
-        // Generate JWT token
+        if (user.role !== "admin") {
+            return sendError(res, {
+                message: "Access denied. Admin only.",
+                statusCode: 403,
+                field: "email",
+            });
+        }
+
         const token = jwt.sign(
             { id: user._id, role: user.role },
             process.env.JWT_SECRET,
             { expiresIn: "7d" }
         );
 
-        // Return user without password
         const userObj = user.toObject();
         delete userObj.password;
 
         return sendSuccess(res, {
             data: { user: userObj, token },
-            message: "Login successful",
+            message: "Admin login successful",
         });
     } catch (error) {
         console.error(error);
