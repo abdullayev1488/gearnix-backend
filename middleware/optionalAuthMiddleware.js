@@ -10,7 +10,6 @@ export const optionalAuthMiddleware = (req, res, next) => {
             req.user = decoded;
         }
     } catch (error) {
-        // Token invalid or expired - continue without user
         req.user = null;
     }
 
