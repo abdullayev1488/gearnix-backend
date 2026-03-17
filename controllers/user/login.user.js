@@ -32,6 +32,14 @@ export const loginUser = async (req, res) => {
             });
         }
 
+        if (user.role !== "customer") {
+            return sendError(res, {
+                message: "No account found with this email",
+                statusCode: 403,
+                field: "email",
+            });
+        }
+
         if (!user.status) {
             return sendError(res, {
                 message: "Account is deactivated",

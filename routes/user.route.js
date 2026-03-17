@@ -13,7 +13,7 @@ export const UserRouter = new Router();
 UserRouter.get("/", getAllUsers);
 UserRouter.post("/register", registerUser);
 UserRouter.post("/login", loginUser);
-UserRouter.post("/admin-login", adminLogin);
+UserRouter.post("/admin/login", adminLogin);
 UserRouter.patch("/:id/status", updateUserStatus);
 UserRouter.patch("/:id/role", updateUserRole);
 

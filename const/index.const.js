@@ -1,41 +1,16 @@
-export const welcomeTemplate = `
- <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Welcome to API</title>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    text-align: center;
-                    padding: 50px;
-                    background-color: #f4f4f9;
-                }
-                h1 {
-                    color: #333;
-                }
-                p {
-                    color: #666;
-                    font-size: 18px;
-                }
-                a {
-                    color: #4CAF50;
-                    text-decoration: none;
-                    font-weight: bold;
-                }
-                a:hover {
-                    text-decoration: underline;
-                }
-            </style>
-        </head>
-        <body>
-            <h1>Welcome to the API! 🎉</h1>
-            <p>API version: 1.0.0</p>
-            <p>Use the following endpoints to explore:</p>
-            <ul>
-                <li><a target="_blank" href="/api/category">/api/category</a> (GET all)</li>
-                <li><a target="_blank" href="/api/category/create">/api/category/create</a> (POST)</li>
-            </ul>
-        </body>
-        </html>`
+export const defaultPage  = 1;
+export const defaultLimit = 10;
+
+export const defaultSearch = "";
+export const sortQueryMap = {
+    "price-low"  : { price: 1 },
+    "price-high" : { price: -1 },
+    "rating"     : { rating: -1 },
+    "latest"     : { createdAt: -1 },
+    "popularity" : { reviews: -1 },
+};
+
+export const defaultSortQuery = { _id: -1 };
+
+export const defaultMaxPrice = 1000;
+export const objectIdRegex = /^[0-9a-fA-F]{24}$/;
