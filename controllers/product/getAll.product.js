@@ -2,6 +2,8 @@ import { parsePagination } from "../../utils/index.utils.js";
 import { sendSuccess, sendError } from "../../utils/responseHelper.js";
 import { defaultSearch } from "../../const/index.const.js";
 import  { buildProductFilter, buildSortQuery, fetchProducts, fetchMetaData, } from "../../service/productService.js";
+import { Category } from "../../models/category.model.js";
+import { Brand } from "../../models/brand.model.js";
 
 export const getAllProducts = async (req, res) => {
     try {
@@ -12,14 +14,18 @@ export const getAllProducts = async (req, res) => {
 
         const sortQuery = buildSortQuery(sortBy);
 
-        const [products, { maxPriceInDb, total }] = await Promise.all([
+        const [products, { maxPriceInDb, total }, allCategories, allBrands] = await Promise.all([
             fetchProducts({ filter, sortQuery, skip, limit: pageLimit }),
             fetchMetaData(filter),
+            Category.find().select("_id name"),
+            Brand.find().select("_id name"),
         ]);
 
         return sendSuccess(res, {
             data: {
                 products,
+                categories: allCategories,
+                brands: allBrands,
                 pagination: {
                     total,
                     page: currentPage,
