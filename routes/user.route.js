@@ -17,5 +17,4 @@ UserRouter.post("/admin/login", adminLogin);
 UserRouter.patch("/:id/status", updateUserStatus);
 UserRouter.patch("/:id/role", updateUserRole);
 
-// Protected route - requires JWT token
 UserRouter.get("/me", authMiddleware, getMe);

@@ -7,10 +7,8 @@ import { optionalAuthMiddleware } from "../middleware/optionalAuthMiddleware.js"
 
 export const ContactRouter = new Router();
 
-// Public route - optionalAuth to link user if logged in
 ContactRouter.post("/", optionalAuthMiddleware, createContact);
 
-// Dashboard routes
 ContactRouter.get("/", getAllContacts);
 ContactRouter.patch("/:id/read", toggleReadContact);
 ContactRouter.delete("/:id", deleteContact);

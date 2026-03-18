@@ -16,7 +16,6 @@ const app = express();
 
 configPackages(app);
 
-// Routes
 app.use("/api/category", CategoryRouter);
 app.use("/api/brand", BrandRouter);
 app.use("/api/product", ProductRouter);

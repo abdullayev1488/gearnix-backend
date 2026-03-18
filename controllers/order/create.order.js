@@ -19,7 +19,6 @@ export const createOrder = async (req, res) => {
             });
         }
 
-        // Generate unique order number
         const count = await Order.countDocuments();
         const orderNumber = `ORD-${String(count + 1).padStart(5, "0")}`;
 

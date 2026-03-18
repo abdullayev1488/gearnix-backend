@@ -14,7 +14,6 @@ export const createContact = async (req, res) => {
 
         const contactData = { name, email, subject, message };
 
-        // If user is authenticated, link the message to the user
         if (req.user) {
             contactData.user = req.user.id;
         }
