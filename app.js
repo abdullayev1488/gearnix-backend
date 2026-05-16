@@ -9,6 +9,9 @@ import { UserRouter } from "./routes/user.route.js";
 import { OrderRouter } from "./routes/order.route.js";
 import { ContactRouter } from "./routes/contact.route.js";
 import { errorHandler } from "./middleware/errorHandler.js";
+import { Product } from "./models/product.model.js";
+import { Category } from "./models/category.model.js";
+import { Brand } from "./models/brand.model.js";
 
 
 const PORT = process.env.PORT || 7000;
@@ -28,6 +31,7 @@ app.use("/api/contact", ContactRouter);
 app.use(errorHandler);
 
 await configDb();
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}

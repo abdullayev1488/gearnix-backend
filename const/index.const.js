@@ -6,6 +6,7 @@ export const sortQueryMap = {
     "price-low"  : { price: 1 },
     "price-high" : { price: -1 },
     "rating"     : { rating: -1 },
+    "rating-low" : { rating: 1 },
     "latest"     : { createdAt: -1 },
     "popularity" : { reviews: -1 },
 };

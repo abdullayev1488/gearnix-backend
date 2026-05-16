@@ -3,7 +3,15 @@ import { sendSuccess, sendError } from "../../utils/responseHelper.js";
 
 export const getAllUsers = async (req, res) => {
     try {
-        const users = await User.find().sort({ _id: -1 });
+        const { role } = req.query;
+
+        const filter = {};
+
+        if (role) {
+            filter.role = role;
+        }
+
+        const users = await User.find(filter).sort({ _id: -1 });
 
         return sendSuccess(res, {
             data: users,
